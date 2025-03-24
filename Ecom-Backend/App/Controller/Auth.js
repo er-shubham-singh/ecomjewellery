@@ -1,6 +1,6 @@
 const User = require('../Model/User.js')
 const OTP = require('../Model/OTP.js')
-const otpGenerator = require('otp-generator.js');
+const otpGenerator = require('otp-generator');
 const JWT_SECRET = "Naresh"
 const jwt = require('jsonwebtoken')
 const Address = require('../Model/Addres.js')
