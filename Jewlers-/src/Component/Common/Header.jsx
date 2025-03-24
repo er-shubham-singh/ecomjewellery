@@ -153,7 +153,7 @@ const Header = () => {
               </div>
             </div>
             {/* Icons Section */}
-            <div className="flex items-center space-x-4 px-3">
+            <div className="flex items-center space-x-4 px-3 g-gray-800">
               {/* <Link to="/diamondsection"><FaGem className="cursor-pointer size-7" /></Link> */}
               <Link to="/store">
                 <FaStore className="cursor-pointer size-7" />
