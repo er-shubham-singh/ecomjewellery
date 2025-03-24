@@ -121,23 +121,24 @@ const Header = () => {
   return (
     <>
       <header className="bg-gray-800 sticky top-0 z-10 text-white shadow-lg  pb-4">
-        <nav className="p-4 bg-gray-800 text-white">
-          <div className="flex items-center justify-between">
+       <nav className="p-4 bg-gray-800 text-white">
+          <div className="flex flex-wrap items-center justify-between">
             {/* Logo */}
-            <Link to="/">
-            <div className="flex items-center">
+            <Link to="/" className="flex-shrink-0 mb-2 md:mb-0">
+              <div className="flex items-center">
                 <img
                   src="/src/assets/logo/logo.png"
                   alt="Logo"
-                  className="h-12 w-70 lg:w-30 "
+                  className="h-10 w-auto md:h-12"
                 />
               </div>
             </Link>
 
-            <div className=" w-full mt-4 flex justify-center md:mt-0 md:w-auto">
-              <div className="hidden md:flex items-center border rounded-full px-4 py-2 w-full md:w-[400px] lg:w-[500px] gap-2 bg-white text-black">
+            {/* Search Box - Full Width for both mobile and desktop */}
+            <div className="w-full order-3 mt-3 md:mt-0 md:order-2 md:w-auto md:flex-1 md:px-4">
+              <div className="flex items-center border rounded-full px-3 py-1.5 md:px-4 md:py-2 w-full gap-2 bg-white text-black">
                 <FaSearch
-                  className="text-gray-600 cursor-pointer"
+                  className="text-gray-600 cursor-pointer text-sm md:text-base"
                   onClick={handleSearch}
                 />
                 <input
@@ -145,21 +146,21 @@ const Header = () => {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
-                  placeholder="Search for Gold Jewellery, Diamond Jewellery and more..."
-                  className="outline-none w-full text-sm"
+                  placeholder="Search jewellery..."
+                  className="outline-none w-full text-xs md:text-sm truncate"
                 />
-                <FaInstagram className="text-gray-600 cursor-pointer" />
-                <FaMicrophone className="text-gray-600 cursor-pointer" />
+                <FaInstagram className="text-gray-600 cursor-pointer text-sm md:text-base" />
+                <FaMicrophone className="text-gray-600 cursor-pointer text-sm md:text-base" />
               </div>
             </div>
-            {/* Icons Section */}
-            <div className="flex items-center space-x-4 px-3 g-gray-800">
-              {/* <Link to="/diamondsection"><FaGem className="cursor-pointer size-7" /></Link> */}
+
+            {/* Icons Section - Mobile Right */}
+            <div className="flex items-center space-x-3 md:space-x-4 order-2">
               <Link to="/store">
-                <FaStore className="cursor-pointer size-7" />
+                <FaStore className="cursor-pointer size-6 md:size-7" />
               </Link>
               <Link to="/wishlist" className="relative">
-                <FaHeart className="cursor-pointer size-7" />
+                <FaHeart className="cursor-pointer size-6 md:size-7" />
                 {wishlist?.length > 0 && (
                   <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
                     {wishlist.length}
@@ -173,9 +174,9 @@ const Header = () => {
                   onMouseEnter={() => setUserDropdown(true)}
                   onMouseLeave={() => setUserDropdown(false)}
                 >
-                  <FaUser className="cursor-pointer size-7" />
+                  <FaUser className="cursor-pointer size-6 md:size-7" />
                   {userDropdown && (
-                    <div className="absolute right-0 top-full w-40 bg-white text-gray-800 shadow-lg rounded-lg">
+                    <div className="absolute right-0 top-full w-40 bg-white text-gray-800 shadow-lg rounded-lg z-10">
                       <Link
                         to="/login/sihnup"
                         className="block px-4 py-2 hover:bg-gray-100"
@@ -197,9 +198,9 @@ const Header = () => {
                   onMouseEnter={() => setUserDropdown(true)}
                   onMouseLeave={() => setUserDropdown(false)}
                 >
-                  <FaUser className="cursor-pointer size-7" />
+                  <FaUser className="cursor-pointer size-6 md:size-7" />
                   {userDropdown && (
-                    <div className="absolute right-0 top-full w-40 bg-white text-gray-800 shadow-lg rounded-lg">
+                    <div className="absolute right-0 top-full w-40 bg-white text-gray-800 shadow-lg rounded-lg z-10">
                       <button
                         onClick={() => {
                           localStorage.removeItem('token')
@@ -223,33 +224,12 @@ const Header = () => {
 
               <Link to="/productbag">
                 <div className="relative cursor-pointer">
-                  <FaShoppingBag className="size-7" />
+                  <FaShoppingBag className="size-6 md:size-7" />
                   <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
                     {cartItems.length}
                   </span>
                 </div>
               </Link>
-            </div>
-          </div>
-
-          {/* Search Box - Full Width Below Icons in Mobile View */}
-
-          <div className="w-full mt-4 md:hidden flex justify-center">
-            <div className="flex items-center border rounded-full px-4 py-2 w-full gap-2 bg-white text-black">
-              <FaSearch
-                className="text-gray-600 cursor-pointer"
-                onClick={handleSearch}
-              />
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
-                placeholder="Search for Gold Jewellery, Diamond Jewellery and more..."
-                className="outline-none w-full text-sm"
-              />
-              <FaInstagram className="text-gray-600 cursor-pointer" />
-              <FaMicrophone className="text-gray-600 cursor-pointer" />
             </div>
           </div>
         </nav>
