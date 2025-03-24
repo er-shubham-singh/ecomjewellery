@@ -1,5 +1,5 @@
 import Image1 from "../../assets/Wedding/image1.jpg";
-import swipe1 from "../../assets/Wedding/sWipe1.png";
+import swipe1 from "../../assets/Wedding/swipe1.png";
 import sWipe2 from "../../assets/Wedding/swipe2.png";
 import swipe3 from "../../assets/Wedding/swipe3.png";
 import uniqureBorder from "../../assets/Wedding/uniqueBorder.png";
