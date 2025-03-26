@@ -465,7 +465,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+{/*       <section>
         <div className="max-w-[1200px] lg:mx-auto mx-3 ">
           <div className="justify-center text-center pt-8 pb-8">
             <h1 className="text-[#996515] md:text-[2rem] font-bold  text-[1rem] leading-[3rem]">
@@ -497,7 +497,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+ */}
       <section>
         <div className="max-w-[1200px] lg:mx-auto mx-3 pt-5 pb-5 ">
           <img src={miabtanishq} alt="image" />
