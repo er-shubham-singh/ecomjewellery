@@ -37,7 +37,6 @@ const Header = () => {
 
   // Token
   useEffect(() => {
-   
     const storedToken = localStorage.getItem('token')
     if (storedToken) {
       dispatch(setToken(storedToken))
@@ -53,15 +52,13 @@ const Header = () => {
     try {
       // Split search term by space to check for category & categoryType
       const parts = searchTerm.toLowerCase().split(' ')
-      const backendUrl = import.meta.env.VITE_BACKEND_HOST_URL;
+      const backendUrl = import.meta.env.VITE_BACKEND_HOST_URL
       if (!backendUrl) {
-        setError('Backend URL is not defined.');
-        setLoading(false);
-        return;
+        setError('Backend URL is not defined.')
+        setLoading(false)
+        return
       }
-      let apiUrl = `${backendUrl}/api/search/${encodeURIComponent(
-        parts[0]
-      )}` // Category
+      let apiUrl = `${backendUrl}/api/search/${encodeURIComponent(parts[0])}` // Category
 
       if (parts.length > 1) {
         apiUrl += `/${encodeURIComponent(parts.slice(1).join(' '))}` // Category Type
@@ -120,8 +117,8 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-gray-800 sticky top-0 z-10 text-white shadow-lg  pb-4">
-       <nav className="p-4 bg-gray-800 text-white">
+      <header className="bg-white sticky top-0 z-10 text-black shadow-lg  pb-4">
+        <nav className="p-4  text-red-900">
           <div className="flex flex-wrap items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex-shrink-0 mb-2 md:mb-0">
@@ -135,8 +132,8 @@ const Header = () => {
             </Link>
 
             {/* Search Box - Full Width for both mobile and desktop */}
-            <div className="w-full order-3 mt-3 md:mt-0 md:order-2 md:w-auto md:flex-1 md:px-4">
-              <div className="flex items-center border rounded-full px-3 py-1.5 md:px-4 md:py-2 w-full gap-2 bg-white text-black">
+            <div className="w-full order-3 mt-3 md:mt-0 md:order-2 md:w-auto md:flex-1 md:px-4 flex justify-center">
+              <div className="flex items-center border rounded-full px-3 py-1.5 md:px-4 md:py-2 w-[500px] gap-2 bg-white text-black">
                 <FaSearch
                   className="text-gray-600 cursor-pointer text-sm md:text-base"
                   onClick={handleSearch}
@@ -236,9 +233,8 @@ const Header = () => {
 
         <div className="container mx-auto flex justify-end pr-4 items-center">
           <h1 className="text-2xl font-bold absolute left-4 p-4">Brand</h1>
-
           {/* Desktop Menu */}
-          <nav className="hidden lg:flex  space-x-8 relative">
+          <nav className="hidden lg:flex space-x-8 relative ">
             {menuItems.map((item, index) => (
               <div
                 key={index}
@@ -248,16 +244,18 @@ const Header = () => {
               >
                 <Link
                   to={item.link}
-                  className="flex items-center gap-2  hover:text-yellow-400 transition-all duration-300 relative"
+                  className="flex items-center gap-2 hover:text-yellow-400 transition-all duration-300 relative  text-black  "
                 >
+                  {/* SVG Image (Change Color with Tailwind) */}
                   <img
                     src={item.imageIcon}
                     alt={item.name}
-                    className="w-5 h-5 text-white"
-                    style={{ filter: 'brightness(0) invert(1)' }}
+                    className="w-5 h-5 text-black fill-current font-semibold"
                   />
 
-                  <span>{item.name}</span>
+                  <span className="text-black hover:text-red-800 hover:font-semibold">
+                    {item.name}
+                  </span>
 
                   {/* Center-out Animated Underline */}
                   <span className="absolute left-0 bottom-0 h-[2px] bg-yellow-400 w-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
@@ -275,23 +273,24 @@ const Header = () => {
                         <Link
                           key={i}
                           to={option.link}
-                          className="flex items-center space-x-2 px-4 py-2 rounded-lg border border-transparent 
-                 transition-all duration-300 ease-in-out group 
-                 hover:bg-yellow-500/20 hover:border-yellow-500 
-                 hover:shadow-[0_4px_15px_rgba(255,215,0,0.5)] hover:scale-95"
+                          className="flex items-center space-x-2 px-4 py-2 rounded-lg border border-transparent
+                transition-all duration-300 ease-in-out group
+                hover:bg-yellow-500/20 hover:border-yellow-500
+                hover:shadow-[0_4px_15px_rgba(255,215,0,0.5)] hover:scale-95"
                         >
                           <div
-                            className="w-8 h-8 flex justify-center items-center rounded-full bg-transparent 
-                      transition-all duration-300 ease-in-out group-hover:bg-yellow-400/30"
+                            className="w-8 h-8 flex justify-center items-center rounded-full bg-transparent
+                  transition-all duration-300 ease-in-out group-hover:bg-yellow-400/30"
                           >
+                            {/* Change SVG Color in Dropdown */}
                             <img
                               src={option.imageIcon}
                               alt={option.name}
-                              className="w-8 h-8 object-cover rounded-full transition-all duration-300 ease-in-out 
-                     group-hover:scale-120 group-hover:brightness-110 group-hover:contrast-125"
+                              className="w-8 h-8 object-cover rounded-full fill-current text-black transition-all duration-300 ease-in-out
+                    group-hover:scale-110 group-hover:brightness-110 group-hover:contrast-125"
                             />
                           </div>
-                          <span className="text-black  font-medium group-hover:text-black">
+                          <span className="text-black font-medium group-hover:text-black">
                             {option.name}
                           </span>
                         </Link>
@@ -309,9 +308,9 @@ const Header = () => {
           </button>
         </div>
         <div
-          className={`lg:hidden fixed top-0 right-0 h-full w-3/4 bg-gray-800 text-white 
-                 transform ${menuOpen ? 'translate-x-0' : 'translate-x-full'} 
-                 transition-transform duration-300 shadow-lg 
+          className={`lg:hidden fixed top-0 right-0 h-full w-3/4 bg-white  
+                 transform ${menuOpen ? 'translate-x-0' : 'translate-x-full'}
+                 transition-transform duration-300 shadow-lg
                  overflow-y-auto max-h-screen`}
         >
           <button
@@ -333,18 +332,17 @@ const Header = () => {
                   <img
                     src={item.imageIcon}
                     alt={item.name}
-                    className=" w-5 h-5 text-white"
-                    style={{ filter: 'brightness(0) invert(1)' }}
+                     className="w-5 h-5 text-black fill-current font-semibold"
                   />
                   <span>{item.name}</span>
                 </button>
                 {openDropdown === index && item.dropdown.length > 0 && (
-                  <div className="bg-gray-700 p-2 rounded">
+                  <div className="text-black p-2 rounded">
                     {item.dropdown.map((option, i) => (
                       <Link
                         key={i}
                         to={option.link}
-                        className="flex items-center space-x-2 px-4 py-2 text-white hover:bg-gray-600 rounded"
+                        className="flex items-center space-x-2 px-4 py-2 black hover:bg-gray-600 rounded"
                         onClick={() => setMenuOpen(false)} // Close menu on click
                       >
                         <img

@@ -195,7 +195,7 @@ export default function Home() {
   }, [])
   return (
     <div className="bg-[#f5f5dc]">
-      <div className="pt-5 flex  w-full  no-scrollbar relative pb-5  mx-auto">
+      <div className=" flex  w-full  no-scrollbar relative pb-5  mx-auto">
         <Swiper
           slidesPerView={1}
           spaceBetween={2}
