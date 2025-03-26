@@ -7,6 +7,7 @@ import { setToken } from '../../slices/authSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { CartContext } from '../Context/CartContext'
 import { WishlistContext } from '../Context/WishlistContext'
+import logo from '../../assets/logo/logo.png'
 import {
   FaSearch,
   FaInstagram,
@@ -124,7 +125,7 @@ const Header = () => {
             <Link to="/" className="flex-shrink-0 mb-2 md:mb-0">
               <div className="flex items-center">
                 <img
-                  src="/src/assets/logo/logo.png"
+                  src={logo}
                   alt="Logo"
                   className="h-10 w-auto md:h-12"
                 />

@@ -70,13 +70,16 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import CoverflowVideoCarousel from './Component/VideoCarousel'
 import './App.css';
+import ScrollToTop from './Component/ScrollToTop'
 
 function App() {
   return (
     <>
     <ToastContainer />
       <Header />
+      <ScrollToTop />
       <Routes>
+        
         <Route path="/" element={<Home />} />
         {/* <Route path="/slider" element={<VideoCarousel /> } /> */}
         <Route path="/store" element={<StoreSection />} />
