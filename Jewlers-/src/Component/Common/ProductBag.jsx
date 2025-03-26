@@ -11,7 +11,7 @@ const ProductBag = () => {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="md:col-span-2 bg-white p-6 rounded-xl shadow-md">
           <h2 className="text-lg font-semibold mb-4">Delivery Details</h2>
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-4 w-full">
             <span className="text-green-600 font-bold text-lg">🇮🇳</span>
             <input
               type="text"
